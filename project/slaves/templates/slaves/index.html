@@ -1,0 +1,25 @@
+<html lang="ru">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>{{ title }}</title>
+</head>
+
+<body>
+<h1>{{ title }}</h1>
+<p>List of slaves</p>
+
+<table border="1">
+{% for item in queryset %}
+<tr>
+  <td>{{ item.owner }}</td>
+  <td>{{ item.title }}</td>
+  <td>{{ item.money }} ₽</td>
+  <td>{{ item.registered_in }}</td>
+</tr>
+{% endfor %}
+</table>
+
+</body>
+</html>
