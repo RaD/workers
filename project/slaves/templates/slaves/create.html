@@ -27,7 +27,7 @@
               <a class="nav-link" href="#">Link</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'slaves:create' %}">Создать</a>
+              <a class="nav-link" href="#">Создать</a>
             </li>
           </ul>
           <form class="d-flex">
@@ -45,28 +45,23 @@
     </div>
 
     <div class="container">
-      <p>List of slaves</p>
-
-      <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Владелец</th>
-          <th scope="col">Название</th>
-          <th scope="col">Зарплата</th>
-          <th scope="col">Зарегистрировано</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for item in queryset %}
-        <tr>
-          <td>{{ item.owner }}</td>
-          <td>{{ item.title }}</td>
-          <td>{{ item.money }} ₽</td>
-          <td>{{ item.registered_in }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+      <div class="row">
+        <div class="col-sm-12 col-md-8">
+          <form method="post" action="{% url 'slaves:create' %}" class="form">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% bootstrap_button button_type="submit" content="Отправить" %}
+          </form>
+        </div>
+        <div class="col-sm-0 col-md-4">
+          <h5>Текст</h5>
+          <p>Тут будет мотивирующий текст</p>
+          <p>Тут будет мотивирующий текст</p>
+          <p>Тут будет мотивирующий текст</p>
+          <p>Тут будет мотивирующий текст</p>
+          <p>Тут будет мотивирующий текст</p>
+        </div>
+      </div>
     </div>
   </main>
 
