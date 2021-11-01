@@ -1,4 +1,4 @@
-<html lang="ru">
+<html lang="ru">{% load django_bootstrap5 %}
 <head>
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -27,7 +27,7 @@
               <a class="nav-link" href="#">Link</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled">Disabled</a>
+              <a class="nav-link" href="#">Создать</a>
             </li>
           </ul>
           <form class="d-flex">
@@ -67,6 +67,32 @@
         {% endfor %}
       </tbody>
     </table>
+    </div>
+
+    <hr/>
+
+    <div class="container-md">
+      <h2 class="text-center">Новое резюме</h2>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-8">
+          <form method="post" action="{% url 'slaves:index' %}" class="form">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% bootstrap_button button_type="submit" content="Отправить" %}
+          </form>
+        </div>
+        <div class="col-sm-0 col-md-4">
+          <h5>Текст</h5>
+          <p>Тут будет мотивирующий текст</p>
+          <p>Тут будет мотивирующий текст</p>
+          <p>Тут будет мотивирующий текст</p>
+          <p>Тут будет мотивирующий текст</p>
+          <p>Тут будет мотивирующий текст</p>
+        </div>
+      </div>
     </div>
   </main>
 

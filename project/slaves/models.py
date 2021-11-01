@@ -8,7 +8,7 @@ class Resume(models.Model):
     title = models.CharField('Название', max_length=128)
     money = models.PositiveIntegerField('Желаемая заплата')
     skill = models.TextField('Навыки', help_text='Напиши обо всём, что умеешь')
-    education = models.CharField('Образования', max_length=1024, blank=True, null=True)
+    education = models.CharField('Образование', max_length=1024, blank=True, null=True)
     registered_in = models.DateTimeField('Создано', auto_now_add=True)
 
     def __str__(self):
