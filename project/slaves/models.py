@@ -5,6 +5,7 @@ from django.db import models
 class Resume(models.Model):
     """Описывает резюме раба"""
     owner = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Владелец')
+    phone = models.CharField('Телефон', max_length=32, default='неизвествен')
     title = models.CharField('Название', max_length=128)
     money = models.PositiveIntegerField('Желаемая заплата')
     skill = models.TextField('Навыки', help_text='Напиши обо всём, что умеешь')

@@ -10,7 +10,7 @@ class ResumeAdmin(admin.ModelAdmin):
         fields = ('title', 'position', 'started_in', 'finished_in')
         extra = 0
 
-    list_display = ('title', 'owner', 'money', 'registered_in')
+    list_display = ('title', 'phone', 'owner', 'money', 'registered_in')
     inlines = (PlaceInline, )
 
 

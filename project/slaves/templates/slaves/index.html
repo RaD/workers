@@ -15,6 +15,7 @@
       <thead>
         <tr>
           <th scope="col">Владелец</th>
+          <th scope="col">Телефон</th>
           <th scope="col">Название</th>
           <th scope="col">Зарплата</th>
           <th scope="col">Зарегистрировано</th>
@@ -24,6 +25,7 @@
         {% for item in queryset %}
         <tr>
           <td>{{ item.owner }}</td>
+          <td>{{ item.phone }}</td>
           <td>{{ item.title }}</td>
           <td>{{ item.money }} ₽</td>
           <td>{{ item.registered_in }}</td>
