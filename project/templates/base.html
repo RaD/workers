@@ -27,7 +27,8 @@
               <a class="nav-link" href="#">Link</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'slaves:create' %}">Создать</a>
+              <a class="nav-link{% if request.user.is_anonymous %} disabled{% endif %}"
+                 href="{% if not request.user.is_anonymous %}{% url 'slaves:create' %}{% else %}#{% endif %}">Создать</a>
             </li>
           </ul>
           <form class="d-flex">
