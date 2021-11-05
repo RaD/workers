@@ -1,3 +1,4 @@
+from django.http import HttpResponseForbidden
 from django.shortcuts import render, redirect
 
 from project.slaves.forms import ResumeForm
@@ -20,6 +21,8 @@ def creates_view(request):
         'form': form,
         }
     if request.method == 'POST' and form.is_valid():
+        if request.user.is_anonymous:
+            return HttpResponseForbidden('Не авторизован')
         form.save(request.user)
         return redirect('slaves:index')
     return render(request, 'slaves/create.html', context)
