@@ -30,6 +30,11 @@
               <a class="nav-link{% if request.user.is_anonymous %} disabled{% endif %}"
                  href="{% if not request.user.is_anonymous %}{% url 'slaves:create' %}{% else %}#{% endif %}">Создать</a>
             </li>
+            {% if request.user.is_anonymous %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'accounts:register' %}">Регистрация</a>
+            </li>
+            {% endif %}
           </ul>
           <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
