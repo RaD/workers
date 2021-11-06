@@ -21,3 +21,8 @@ class RegisterForm(forms.ModelForm):
         if data['password'] != data['password_confirmation']:
             raise forms.ValidationError('Пароли не совпадают!')
         return data
+
+    def save(self, commit=True):
+        value = self.instance.password
+        self.instance.set_password(value)
+        return super().save(commit=commit)
