@@ -11,10 +11,11 @@ class RegisterForm(forms.ModelForm):
     class Meta:
         model = UserModel
         fields = ('username', 'password')
-        # widgets = {
-        #     'password': forms.PasswordInput(),
-        #     'password_confirmation': forms.PasswordInput(),
-        #     }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['password'].widget = forms.PasswordInput()
+        self.fields['password_confirmation'].widget = forms.PasswordInput()
 
     def clean(self):
         data = self.cleaned_data
