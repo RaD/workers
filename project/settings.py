@@ -24,6 +24,7 @@ SECRET_KEY = 'django-insecure-y)+@x-raxj6nfgnhz3c2a-zpv772)2xrho91u5j_jo8n#!b5j4
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+OFFLINE = True
 
 ALLOWED_HOSTS = []
 
@@ -69,7 +70,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-            ],
+
+                'project.context.common_vars',
+                ],
         },
     },
 ]
@@ -125,6 +128,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_FINDER = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    )
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'project', 'static'),
+    ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'public', 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
