@@ -20,7 +20,10 @@
       <div class="col-sm-0 col-md-4">
         <h5>Пояснение</h5>
         <p>Введите имя пользователя и дважды введите пароль!</p>
-        <a class="nav-link" href="{% url 'password_reset' %}">Сброс пароля</a>
+
+        <h5>Дополнительно</h5>
+        <p><a class="nav-link" href="{% url 'accounts:register' %}">Регистрация</a></p>
+        <p><a class="nav-link" href="{% url 'password_reset' %}">Сброс пароля</a></p>
       </div>
     </div>
   </div>
