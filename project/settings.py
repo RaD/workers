@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'project.accounts',
+    'project.forum',
     'project.slaves',
 
     'django.contrib.admin',
