@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block "head_title" %}Обсуждение {{ post.text|truncatechars:20 }}{% endblock %}
+
+{% block "main" %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10 col-xs-12">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'forum:index' %}">Форумы</a></li>
+          <li class="breadcrumb-item active" aria-current="page">
+            <a href="{% url 'forum:forum' post.forum.pk %}">{{ post.forum.title }}</a></li>
+        </ol>
+      </nav>
+    </div><!-- col -->
+  </div><!-- row -->
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      <p>{{ post.text }}</p>
+    </div>
+    <div class="col-sm-2">
+      <p>{{ post.registered_by }}</p>
+    </div>
+    <div class="col-sm-2">
+      <p><nobr>{{ post.registered_in|date:"Y/m/d H:i:s T" }}</nobr></p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  {% for reply in post.reply_set.all %}
+  <div class="row">
+    <div class="col-sm-8">
+      <p>{{ reply.text }}</p>
+    </div>
+    <div class="col-sm-2">
+      <p>{{ reply.registered_by }}</p>
+    </div>
+    <div class="col-sm-2">
+      <p><nobr>{{ reply.registered_in|date:"Y/m/d H:i:s T" }}</nobr></p>
+    </div>
+  </div>
+  {% empty %}
+  <div class="row">
+    <div class="col">
+      <p>Ответов пока нет...</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <a class="btn btn-primary" href="{% url 'forum:reply_add' post.pk %}">Ответить</a>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

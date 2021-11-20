@@ -1,5 +1,27 @@
 {% extends 'base.html' %}
 
+{% block "head_title" %}Форум{% endblock %}
+
 {% block "main" %}
-Здесь будет форум
+<div class="container">
+  {% for group in queryset %}
+  <div class="row">
+    <div class="col">
+      <h4>{{ group.title }}</h4>
+
+      <div class="container">
+        {% for forum in group.forum_set.all %}
+        <figure>
+          <blockquote class="blockquote">
+            <a href="{{ forum.get_absolute_url }}">{{ forum.title }}</a>
+          </blockquote>
+          <figcaption class="blockquote-footer">{{ forum.desc }}</figcaption>
+        </figure>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+  {% endfor %}
+</div>
 {% endblock %}

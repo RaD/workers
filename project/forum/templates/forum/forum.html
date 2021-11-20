@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block "head_title" %}Форум {{ forum.title }}{% endblock %}
+
+{% block "main" %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10 col-xs-12">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'forum:index' %}">Форумы</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{ forum.title }}</li>
+        </ol>
+      </nav>
+    </div><!-- col -->
+    <div class="col-sm-2 col-xl-12">
+      <a class="btn btn-primary" href="{% url 'forum:post_add' forum.pk %}">Добавить</a>
+    </div><!-- col -->
+  </div><!-- row -->
+</div>
+
+<div class="container">
+  {% for post in forum.post_set.all %}
+  <div class="row">
+    <div class="col">
+      <a href="{{ post.get_absolute_url }}">
+        <p>{{ post.text }}</p>
+      </a>
+    </div>
+    <div class="col">
+      <p>{{ post.registered_by }}</p>
+      <p>{{ post.registered_in }}</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
